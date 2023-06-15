@@ -68,5 +68,4 @@ def run_conversation():
         return second_response
 
 response = run_conversation()
-print(response)
 print(response["choices"][0]["message"]["content"])
