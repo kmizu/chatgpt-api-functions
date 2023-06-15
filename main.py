@@ -16,7 +16,7 @@ def read_local_file(path):
 def run_conversation():
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-0613",
-        messages=[{"role": "user", "content": "main.pyの内容を表示してください"}],
+        messages=[{"role": "user", "content": "main.pyを読み込んだ上で解説してください"}],
         functions=[
             {
                 "name": "read_local_file",
@@ -56,7 +56,7 @@ def run_conversation():
         second_response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-0613",
             messages=[
-                {"role": "user", "content": "main.pyの内容を表示してください"},
+                {"role": "user", "content": "main.pyを読み込んだ上で解説してください"},
                 message,
                 {
                     "role": "function",
@@ -68,4 +68,5 @@ def run_conversation():
         return second_response
 
 response = run_conversation()
+print(response)
 print(response["choices"][0]["message"]["content"])
